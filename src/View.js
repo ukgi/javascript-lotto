@@ -8,6 +8,10 @@ class View {
 
   inputPurchaseAmount(callback) {
     MissionUtils.Console.readLine('구입금액을 입력해 주세요.', (answer) => {
+      if (isNaN(Number(answer)) || answer === undefined || answer === null) {
+        throw new Error('[ERROR] 입력값이 올바르지 않습니다.');
+      }
+
       if (answer % 1000 === 0) {
         this.inputMoney = answer;
         const lottosNumber = answer / 1000;
@@ -20,7 +24,10 @@ class View {
   }
 
   printLottos(lottos) {
-    lottos.map((lotto) => MissionUtils.Console.print(lotto));
+    lottos.forEach((lotto) => {
+      const lottoString = JSON.stringify(lotto).replace(/,/g, ', '); // 로또 배열을 JSON 문자열로 변환하고 각 숫자 사이에 공백 추가
+      MissionUtils.Console.print(lottoString); // JSON 문자열을 출력
+    });
     this.inputWinningNumber();
   }
 
@@ -45,8 +52,6 @@ class View {
       100;
 
     MissionUtils.Console.print(`
-    당첨 통계
-    ---
     3개 일치 (5,000원) - ${result[0].count}개
     4개 일치 (50,000원) - ${result[1].count}개
     5개 일치 (1,500,000원) - ${result[2].count}개
