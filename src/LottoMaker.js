@@ -19,6 +19,7 @@ class LottoMaker {
         )
       );
     }
+    this.lottos = lottos;
     this.handleMakeLotto(lottos);
   }
 }

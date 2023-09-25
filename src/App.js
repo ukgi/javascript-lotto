@@ -27,6 +27,14 @@ class App {
   inputWinningNumber() {
     MissionUtils.Console.readLine('당첨 번호를 입력해 주세요.', (number) => {
       this.lotto = new Lotto(number.split(','));
+      this.inputBonusNumber();
+    });
+  }
+
+  inputBonusNumber() {
+    MissionUtils.Console.readLine('보너스 번호를 입력해 주세요.', (number) => {
+      this.lotto.handleBonusNumber(number);
+      this.lotto.makewinningResult(this.lottoMaker.lottos);
     });
   }
 }
