@@ -1,12 +1,14 @@
 const MissionUtils = require('@woowacourse/mission-utils');
 const View = require('./View');
 const LottoMaker = require('./LottoMaker');
+const Lotto = require('./Lotto');
 
 class App {
   constructor() {
     this.view = new View();
     this.lottoMaker = new LottoMaker((lottos) => {
       this.view.printLottos(lottos);
+      this.inputWinningNumber();
     });
   }
 
@@ -19,6 +21,12 @@ class App {
 
       MissionUtils.Console.print('1000원으로 나누어떨어지지 않습니다. 다시 입력해주세요.');
       this.play();
+    });
+  }
+
+  inputWinningNumber() {
+    MissionUtils.Console.readLine('당첨 번호를 입력해 주세요.', (number) => {
+      this.lotto = new Lotto(number.split(','));
     });
   }
 }
