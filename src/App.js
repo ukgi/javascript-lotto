@@ -6,7 +6,7 @@ class App {
   constructor() {
     this.view = new View();
     this.lottoMaker = new LottoMaker((lottos) => {
-      console.log(lottos);
+      this.view.printLottos(lottos);
     });
   }
 
