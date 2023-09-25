@@ -1,3 +1,26 @@
+const lottoMoney = [
+  {
+    money: 5000,
+    count: 0,
+  },
+  {
+    money: 50000,
+    count: 0,
+  },
+  {
+    money: 1500000,
+    count: 0,
+  },
+  {
+    money: 30000000,
+    count: 0,
+  },
+  {
+    money: 2000000000,
+    count: 0,
+  },
+];
+
 class Lotto {
   #numbers;
 
@@ -28,14 +51,28 @@ class Lotto {
 
   // TODO: 추가 기능 구현
   makewinningResult(lottos) {
-    console.log('로또번호', lottos);
-    console.log('당첨번호', this.#numbers);
-    console.log('보너스번호', this.bonusNumber);
     let count = 0;
-    this.#numbers.forEach((number) => {
-      lottos.forEach((lotto) => (lotto.find((num) => num === +number) ? (count += 1) : count));
+    lottos.forEach((lottoArr) => {
+      this.#numbers.forEach((winningNum) => {
+        lottoArr.includes(+winningNum) ? (count += 1) : count;
+      });
+      if (count === 3) lottoMoney[0].count += 1;
+      if (count === 4) lottoMoney[1].count += 1;
+      if (count === 5) {
+        const numbers = [...this.#numbers];
+        numbers.splice(
+          this.#numbers.findIndex((winningNum) => !lottoArr.includes(+winningNum)),
+          1,
+          +this.bonusNumber
+        );
+        numbers.every((winningNum) => lottoArr.includes(+winningNum))
+          ? (lottoMoney[3].count += 1)
+          : (lottoMoney[2].count += 1);
+      }
+      if (count === 6) lottoMoney[4].count += 1;
+      count = 0;
     });
-    console.log('일치하는 갯수', count);
+    return lottoMoney;
   }
 }
 

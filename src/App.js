@@ -8,7 +8,7 @@ class App {
       saveWinningNumber: (number) => (this.lotto = new Lotto(number.split(','))),
       saveBounusNumber: (number) => {
         this.lotto.saveBonusNumber(number);
-        this.lotto.makewinningResult(this.lottoMaker.lottos);
+        this.view.printWinningResult(this.lotto.makewinningResult(this.lottoMaker.lottos));
       },
     });
     this.lottoMaker = new LottoMaker((lottos) => this.view.printLottos(lottos));
