@@ -5,8 +5,8 @@ const MIN_LOTTO_NUMBER = 1;
 const MAX_LOTTO_NUMBER = 45;
 
 class LottoMaker {
-  constructor(handleMakeLotto) {
-    this.handleMakeLotto = handleMakeLotto;
+  constructor(returnLottos) {
+    this.returnLottos = returnLottos;
   }
 
   makeLotto(number) {
@@ -20,7 +20,7 @@ class LottoMaker {
       );
     }
     this.lottos = lottos;
-    this.handleMakeLotto(lottos);
+    this.returnLottos(lottos);
   }
 }
 

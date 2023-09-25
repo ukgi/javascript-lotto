@@ -16,11 +16,9 @@ class Lotto {
     if (numbers.length !== new Set([...numbers]).size) {
       throw new Error('[ERROR] 당첨 번호에 중복되는 값이 있으면 안됩니다.');
     }
-
-    this.#numbers = numbers.map((number) => +number); // 왜 변환이 안되지
   }
 
-  handleBonusNumber(number) {
+  saveBonusNumber(number) {
     if (number < 1 || number > 45) {
       throw new Error('[ERROR] 로또 번호는 1부터 45 사이의 숫자여야 합니다.');
     }
