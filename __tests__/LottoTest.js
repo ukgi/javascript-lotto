@@ -27,6 +27,12 @@ describe('로또 클래스 테스트', () => {
     }).toThrow('[ERROR]');
   });
 
+  test('로또 번호의 입력값에 공백이 있으면 예외가 발생한다.', () => {
+    expect(() => {
+      new Lotto([1, , 3, 4, 5, 6]);
+    }).toThrow('[ERROR]');
+  });
+
   test('보너스 번호의 입력값이 숫자가 아니면 예외가 발생한다.', () => {
     expect(() => {
       new Lotto([1, 2, 3, 4, 5, 6]).saveBonusNumber('f');
