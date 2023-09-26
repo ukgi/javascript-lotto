@@ -8,7 +8,7 @@ class View {
 
   inputPurchaseAmount(callback) {
     MissionUtils.Console.readLine('구입금액을 입력해 주세요.', (answer) => {
-      if (isNaN(Number(answer)) || answer === undefined || answer === null) {
+      if (isNaN(Number(answer)) || answer === undefined || answer === null || answer === '') {
         throw new Error('[ERROR] 입력값이 올바르지 않습니다.');
       }
 

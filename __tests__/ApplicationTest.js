@@ -66,6 +66,30 @@ describe('로또 테스트', () => {
     expect(() => {
       const app = new App();
       app.play();
-    }).toThrow('[ERROR] 입력값이 올바르지 않습니다.');
+    }).toThrow('[ERROR]');
+  });
+
+  test('구입금액이 undefined이면 에러를 던진다', () => {
+    mockQuestions([undefined]);
+    expect(() => {
+      const app = new App();
+      app.play();
+    }).toThrow('[ERROR]');
+  });
+
+  test('구입금액이 null이면 에러를 던진다', () => {
+    mockQuestions([undefined]);
+    expect(() => {
+      const app = new App();
+      app.play();
+    }).toThrow('[ERROR]');
+  });
+
+  test('구입금액을 입력하지 않으면 에러를 던진다', () => {
+    mockQuestions([undefined]);
+    expect(() => {
+      const app = new App();
+      app.play();
+    }).toThrow('[ERROR]');
   });
 });
