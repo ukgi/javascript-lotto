@@ -30,7 +30,7 @@ class Lotto {
   }
 
   validate(numbers) {
-    if (numbers === undefined || numbers === null) {
+    if (isNaN(Number([...numbers].join(''))) || numbers === undefined || numbers === null) {
       throw new Error('[ERROR] 입력값이 올바르지 않습니다.');
     }
 
@@ -46,7 +46,7 @@ class Lotto {
   }
 
   saveBonusNumber(number) {
-    if (number === undefined || number === null) {
+    if (isNaN(number) || number === undefined || number === null) {
       throw new Error('[ERROR] 입력값이 올바르지 않습니다.');
     }
     if (number < 1 || number > 45) {

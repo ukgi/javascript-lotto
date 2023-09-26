@@ -23,6 +23,7 @@ class View {
     });
   }
 
+  // ✅
   printLottos(lottos) {
     lottos.forEach((lotto) => {
       const lottoString = JSON.stringify(lotto).replace(/,/g, ', '); // 로또 배열을 JSON 문자열로 변환하고 각 숫자 사이에 공백 추가
