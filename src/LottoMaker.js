@@ -6,6 +6,7 @@ const MAX_LOTTO_NUMBER = 45;
 
 class LottoMaker {
   constructor(returnLottos) {
+    this.lottos;
     this.returnLottos = returnLottos;
   }
 
